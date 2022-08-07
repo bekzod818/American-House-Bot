@@ -46,13 +46,13 @@ class Database:
         ])
         return sql, tuple(parameters.values())
 
-    def add_user(self, id: int, name: str, email: str = None, language: str = 'uz'):
+    def add_user(self, tg_id: int, username: str):
         # SQL_EXAMPLE = "INSERT INTO Users(id, Name, email) VALUES(1, 'John', 'John@gmail.com')"
 
         sql = """
-        INSERT INTO Users(id, Name, email, language) VALUES(?, ?, ?, ?)
+        INSERT INTO Users(tg_id, username) VALUES(?, ?)
         """
-        self.execute(sql, parameters=(id, name, email, language), commit=True)
+        self.execute(sql, parameters=(tg_id, username), commit=True)
 
     def select_all_users(self):
         sql = """
@@ -67,16 +67,22 @@ class Database:
 
         return self.execute(sql, parameters=parameters, fetchone=True)
 
+    def get_coupon(self):
+        # SQL_EXAMPLE = "SELECT * FROM Users where id=1 AND Name='John'"
+        sql = "SELECT * FROM Coupon;"
+
+        return self.execute(sql, fetchall=True)
+
     def count_users(self):
         return self.execute("SELECT COUNT(*) FROM Users;", fetchone=True)
 
-    def update_user_email(self, email, id):
+    def update_user_data(self, fullname, age, address, phone, tg_id):
         # SQL_EXAMPLE = "UPDATE Users SET email=mail@gmail.com WHERE id=12345"
 
         sql = f"""
-        UPDATE Users SET email=? WHERE id=?
+        UPDATE Users SET full_name=?, age=?, address=?, phone_number=? WHERE tg_id=?
         """
-        return self.execute(sql, parameters=(email, id), commit=True)
+        return self.execute(sql, parameters=(fullname, age, address, phone, tg_id), commit=True)
 
     def delete_users(self):
         self.execute("DELETE FROM Users WHERE TRUE", commit=True)
