@@ -36,6 +36,7 @@ async def bot_start(message: types.Message):
         await bot.send_message(chat_id=ADMINS[0], text=msg)
 
     except sqlite3.IntegrityError as err:
-        name = db.select_user(tg_id=message.from_user.id)[3]
+        name = db.select_user(tg_id=message.from_user.id)[2]
+        print(name)
         await bot.send_message(chat_id=ADMINS[0], text=f"{name} bazaga oldin qo'shilgan")
         await message.answer(f"Assalomu aleykum {name}. Xush kelibsiz!", reply_markup=menu)
