@@ -2,7 +2,7 @@ import sqlite3
 
 
 class Database:
-    def __init__(self, path_to_db="main.db"):
+    def __init__(self, path_to_db="db.sqlite"):
         self.path_to_db = path_to_db
 
     @property
@@ -73,6 +73,31 @@ class Database:
 
         return self.execute(sql, fetchall=True)
 
+    def get_about(self,**kwargs):
+        sql = "SELECT * FROM About WHERE "
+        sql, parameters = self.format_args(sql, kwargs)
+
+
+        return self.execute(sql, parameters=parameters, fetchone=True)
+
+    def get_fac(self,**kwargs):
+        sql = "SELECT * FROM Fakultet WHERE "
+        sql, parameters = self.format_args(sql, kwargs)
+
+        return self.execute(sql, parameters=parameters, fetchone=True)
+
+
+    def get_all_fac(self):
+        # SQL_EXAMPLE = "SELECT * FROM Users where id=1 AND Name='John'"
+        sql = "SELECT * FROM Fakultet"
+
+        return self.execute(sql, fetchall=True)
+
+    def get_all_imkon(self):
+        # SQL_EXAMPLE = "SELECT * FROM Users where id=1 AND Name='John'"
+        sql = "SELECT * FROM Chance"
+
+        return self.execute(sql, fetchall=True)
     def count_users(self):
         return self.execute("SELECT COUNT(*) FROM Users;", fetchone=True)
 

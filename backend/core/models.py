@@ -1,5 +1,5 @@
-from statistics import mode
 from django.db import models
+
 
 class User(models.Model):
     tg_id = models.PositiveBigIntegerField(verbose_name='User ID', unique=True)
@@ -43,13 +43,14 @@ class About(models.Model):
         ('univer', 'Universitet'),
         ('house', 'American House')
     )
-    image_url = models.URLField(verbose_name="Rasm uchun link")
+    telegraph = models.URLField(verbose_name="Telegraph/YouTube uchun link", null=True)
+    image_url = models.URLField(verbose_name="Rasm uchun link", null=True)
     text = models.TextField(max_length=1024, verbose_name="Rasmdan keyingi matn")
     type = models.CharField(max_length=10, choices=data)
 
     class Meta:
         db_table = "About"
-    
+
     def __str__(self) -> str:
         return self.type
 

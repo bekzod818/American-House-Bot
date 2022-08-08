@@ -6,7 +6,8 @@ menu = ReplyKeyboardMarkup(
         [KeyboardButton(text="🏛 Universitet haqida")],
         [KeyboardButton(text="🏫 American House haqida")],
         [KeyboardButton(text="📚 Fakultetlar")],
-        [KeyboardButton(text="📌 Imkoniyatlaringiz")]
+        [KeyboardButton(text="📌 Imkoniyatlar")]
     ],
-    resize_keyboard=True
+    resize_keyboard=True,
+    one_time_keyboard=True
 )

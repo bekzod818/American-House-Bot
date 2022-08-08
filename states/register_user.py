@@ -6,3 +6,6 @@ class Register(StatesGroup):
     age = State()
     manzil = State()
     contact = State()
+
+class Slug(StatesGroup):
+    first = State()
