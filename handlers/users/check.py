@@ -33,7 +33,7 @@ async def checker(call: types.CallbackQuery):
             msg = f"Salom xush kelibsiz\n👤 <b>{call.from_user.full_name}</b>!\nBizning ma'lumotlar 🔽"
             await call.message.answer(msg)
         else:
-            msg = f"Siz oldin ro'yhatdan o'tishingiz lozim.\nIltimos familiya va ismingizni kiriting (Anvarov Anvar)"
+            msg = f"Assalomu alaykum! Marhamat ism-familyanggizni kiriting"
             await call.message.answer(msg)
             await Register.full_name.set()
     else:
@@ -43,7 +43,7 @@ async def checker(call: types.CallbackQuery):
         for channel in CHANNELS:
             chat = await bot.get_chat(channel)
             invite_link = await chat.export_invite_link()
-            check_button.insert(InlineKeyboardButton(text=f"{chat.title}", url=invite_link))
-        check_button.add(InlineKeyboardButton(text="americanhouse__", url="https://www.instagram.com/americanhouse__/"))
-        check_button.add(InlineKeyboardButton(text="✔️ Obunani tekshirish", callback_data="check_subs"))
+            check_button.insert(InlineKeyboardButton(text=f"A'zo bo'lish", url=invite_link))
+        check_button.add(InlineKeyboardButton(text="A'zo bo'lish", url="https://www.instagram.com/americanhouse__/"))
+        check_button.add(InlineKeyboardButton(text="✅ Tasdiqlash", callback_data="check_subs"))
         await call.message.answer(result, disable_web_page_preview=True, reply_markup=check_button)

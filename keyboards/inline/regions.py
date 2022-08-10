@@ -16,13 +16,19 @@ data = [
 {"id":"13","name_uz":"Xorazm viloyati","name_oz":"������ �������","name_ru":"���������� �������"},
 {"id":"14","name_uz":"Toshkent shahri","name_oz":"������� ��?��","name_ru":"����� �������"}]
 
-viloyatlar = InlineKeyboardMarkup(row_width=1)
-for d in data:
-    viloyatlar.insert(InlineKeyboardButton(text=f"{d['name_uz']}", callback_data=d['name_uz']))
+viloyatlar = ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
+viloyatlar.row("Qoraqalpog'iston Respublikasi")
+viloyatlar.row("Andijon viloyati", "Buxoro viloyati")
+viloyatlar.row("Farg'ona viloyati", "Xorazm viloyati")
+viloyatlar.row("Surxandaryo viloyati", "Toshkent shahri")
+viloyatlar.row("Qashqadaryo viloyati")
+viloyatlar.row("Samarqand viloyati", "Sirdaryo viloyati")
+viloyatlar.row("Navoiy viloyati", "Namangan viloyati")
+viloyatlar.row("Jizzax viloyati", "Toshkent viloyati")
 
 contact = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="Raqamni yuborish", request_contact=True)]
+        [KeyboardButton(text="Telefon raqamni yuborish", request_contact=True)]
     ],
     resize_keyboard=True
 )

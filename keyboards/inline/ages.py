@@ -1,9 +1,9 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 
-interval = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="17 yoshdan - 22 yoshgacha", callback_data="17-22")],
-        [InlineKeyboardButton(text="22 yoshdan - 35 yoshgacha", callback_data="22-35")]
+interval = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="18 yoshdan - 25 yoshgacha")],
+        [KeyboardButton(text="25 yoshdan - 35 yoshgacha")]
     ]
 )
